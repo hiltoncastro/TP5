@@ -1,0 +1,72 @@
+package view;
+import model.Professor;
+import javax.swing.JOptionPane;
+
+public class Execucao {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Professor professor = new Professor();
+		int dis=0,cur=0;
+		String disciplina="",curso="",dadosProfessor="";
+		
+		professor.setNome(JOptionPane.showInputDialog(null, "Nome: "));
+		professor.setEndereco(JOptionPane.showInputDialog(null, "Endereco: "));
+		professor.setBairro(JOptionPane.showInputDialog(null, "Bairro: "));
+		professor.setCep(Integer.parseInt(JOptionPane.showInputDialog(null, "CEP: ")));
+		professor.setCidade(JOptionPane.showInputDialog(null, "Cidade: "));
+		professor.setEstado(JOptionPane.showInputDialog(null, "Estado: "));
+		professor.setRg(Long.parseLong(JOptionPane.showInputDialog(null, "RG: ")));
+		professor.setCpf(Long.parseLong(JOptionPane.showInputDialog(null, "CPF: ")));
+		
+		
+			
+		
+		try {
+			dis = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantas disciplinas você possui?"));
+			String disciplinas[] = new String[100];
+			for (int i = 0; i < dis; i++) {
+				disciplinas[i] = JOptionPane.showInputDialog(null, "Digite a disciplina " + (i+1));
+			}
+			professor.setDisciplinas(disciplinas);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			 cur = Integer.parseInt(JOptionPane.showInputDialog(null, "Quantos cursos você possui?"));
+			String cursos[] = new String[100];
+			for (int i= 0; i < cur; i++) {
+				cursos[i] = JOptionPane.showInputDialog(null, "Digite o curso: " + (i+1));
+			}
+			professor.setCursos(cursos);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			
+			for (int i = 0; i < dis; i++) {
+				disciplina=disciplina+professor.getDisciplinas()[i]+"\n";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			
+			for (int i= 0; i < cur; i++) {
+				curso=curso+professor.getCursos()[i]+"\n";
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		dadosProfessor=professor.getNome()+"\n"+professor.getEndereco()+"\n"+professor.getBairro()+"\n"+professor.getCep()+"\n"+professor.getCidade()+"\n"+professor.getEstado()+"\n"+professor.getRg()+
+				"\n"+professor.getCpf()+"\n";	
+		JOptionPane.showMessageDialog(null,dadosProfessor+"\n"+"\n"+disciplina+"\n"+"\n"+curso);
+		
+	}
+
+}
